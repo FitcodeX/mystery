@@ -1,33 +1,33 @@
 import re
 
 def list_odd_length_words(any_string):
-    string_split = any_string.split(" ")
-    string_no_specials = []
-    for element in string_split:
-        letter_char = re.sub("[.!?]", "", element)
-        string_no_specials.append(letter_char)
-    print(any_string, string_split, string_no_specials)
-    z = {}
+    words = any_string.split(" ")
+    words_no_specials = []
+    for word in words:
+        plain_word = re.sub("[.!?]", "", word)
+        words_no_specials.append(plain_word)
+ 
+    word_dictionary = {}
 
-    for stuff in string_no_specials:
-        if len(stuff) in z: 
-            z[len(stuff)] = z[len(stuff)] + [stuff]
+    for word in words_no_specials:
+        if len(word) in word_dictionary: 
+            word_dictionary[len(word)] = word_dictionary[len(word)] + [word]
         else:
-            z[len(stuff)]=[stuff]
-    string_split = {}
+            word_dictionary[len(word)]=[word]
+    odd_length_words = {}
 
-    for string_no_specials in z:
-        for element in z[y]:
-            if len(element) % 2 == 1:
-                a[y] = z[y]
+    for word in word_dictionary:
+        for word in word_dictionary[word]:
+            if len(word) % 2 == 1:
+                odd_length_words[word] = word_dictionary[word]
         else:
             continue
-    return a
+    return odd_length_words
 
 
 
 
 # Tests
-#assert(my_func("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
-#assert(my_func("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
-#print(my_func("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
+assert(list_odd_length_words("This is a sentence. And yet another one!") == {1: ['a'], 3: ['And', 'yet', 'one'], 7: ['another']})
+assert(list_odd_length_words("Miscollated alphabetic superimposition") == {11: ['Miscollated'], 15: ['superimposition']})
+print(list_odd_length_words("a a a a bb bb bb ccc ccc") == {1: ['a', 'a', 'a', 'a'], 3: ['ccc', 'ccc']})
