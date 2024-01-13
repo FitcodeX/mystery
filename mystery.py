@@ -17,8 +17,8 @@ def list_odd_length_words(any_string):
     odd_length_words = {}
 
     for word in word_dictionary:
-        for word in word_dictionary[word]:
-            if len(word) % 2 == 1:
+        for odd_word in word_dictionary[word]:
+            if len(odd_word) % 2 == 1:
                 odd_length_words[word] = word_dictionary[word]
         else:
             continue
